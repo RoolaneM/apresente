@@ -95,7 +95,7 @@ export default function BpmnPage() {
           fontWeight: '700',
           textShadow: '0 2px 4px rgba(0,0,0,0.2)'
         }}>
-          BPMN 2.0
+          BPMN
         </h1>
         <p style={{
           textAlign: 'center',
@@ -104,7 +104,7 @@ export default function BpmnPage() {
           marginBottom: '35px',
           fontWeight: '500'
         }}>
-          Business Process Model and Notation – Modelagem de Processos de Negócio
+          Modelagem de Processos de Negócio
         </p>
 
         {/* Botões de exemplo */}
@@ -181,10 +181,6 @@ export default function BpmnPage() {
           opacity: 0.9,
           lineHeight: '1.6'
         }}>
-          <p>
-            <strong>BPMN 2.0</strong> • Padrão <a href="https://www.omg.org" target="_blank" style={{ color: '#fff', textDecoration: 'underline' }}>OMG</a> • 
-            Usado em <strong>Camunda, Activiti, Flowable, Bonita</strong>
-          </p>
           <p style={{ marginTop: '10px', fontSize: '0.9rem' }}>
             Ideal para: Automação de processos, RPA, Workflow, Orquestração
           </p>

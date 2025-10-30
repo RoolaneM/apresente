@@ -73,7 +73,7 @@ export default function UmlPage() {
         boxShadow: '0 20px 40px rgba(0,0,0,0.2)'
       }}>
         <h1 style={{ textAlign: 'center', fontSize: '2.5rem', marginBottom: '10px' }}>
-          UML – Unified Modeling Language
+          UML
         </h1>
         <p style={{ textAlign: 'center', fontSize: '1.1rem', opacity: 0.9, marginBottom: '30px' }}>
           Modelagem visual de sistemas com diagramas profissionais
@@ -118,9 +118,7 @@ export default function UmlPage() {
           </p>
         </div>
 
-        <div style={{ marginTop: '30px', textAlign: 'center', fontSize: '0.95rem', opacity: 0.8 }}>
-          <p><strong>UML 2.5.1</strong> • Padrão OMG • Usado por milhões de arquitetos</p>
-        </div>
+      
       </div>
     </div>
   );

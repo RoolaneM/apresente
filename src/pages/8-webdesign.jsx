@@ -12,25 +12,29 @@ export default function WebDesignPage() {
       title: "E-commerce Premium",
       desc: "Loja online com animações suaves e checkout fluido",
       tags: ["React", "Tailwind", "Stripe"],
-      color: "from-purple-500 to-pink-500"
+      color: "from-purple-500 to-pink-500",
+      image: "/ecommerce.jpg" // imagem em public/ecommerce.jpg
     },
     {
       title: "Dashboard Analytics",
       desc: "Painel com gráficos interativos e métricas em tempo real",
       tags: ["Vue", "Chart.js", "API"],
-      color: "from-blue-500 to-cyan-500"
+      color: "from-blue-500 to-cyan-500",
+      image: "/dashboard.jpg"
     },
     {
       title: "App Mobile UI",
       desc: "Design de aplicativo com microinterações e gestos",
       tags: ["Figma", "Framer", "iOS"],
-      color: "from-green-500 to-teal-500"
+      color: "from-green-500 to-teal-500",
+      image: "/app-mobile.jpg"
     },
     {
       title: "Landing Page SaaS",
       desc: "Conversão otimizada com CTA's estratégicos",
       tags: ["Next.js", "GSAP", "AOS"],
-      color: "from-orange-500 to-red-500"
+      color: "from-orange-500 to-red-500",
+      image: "/landing-saas.jpg"
     }
   ];
 
@@ -60,7 +64,7 @@ export default function WebDesignPage() {
           style={{
             padding: '10px 16px',
             background: darkMode ? '#333' : 'rgba(255,255,255,0.3)',
-            color: darkMode ? '#fff' : '#fff',
+            color: '#fff',
             border: 'none',
             borderRadius: '50px',
             fontSize: '14px',
@@ -78,14 +82,47 @@ export default function WebDesignPage() {
       {/* Hero */}
       <section style={{ padding: '60px 20px', textAlign: 'center' }}>
         <h2 style={{ fontSize: '3rem', marginBottom: '16px', fontWeight: '800' }}>
-          Design que <span style={{ background: 'linear-gradient(90deg, #4e9af1, #f472b6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Converte</span>
+          Design que{" "}
+          <span
+            style={{
+              background: 'linear-gradient(90deg, #4e9af1, #f472b6)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent'
+            }}
+          >
+            Converte
+          </span>
         </h2>
-        <p style={{ fontSize: '1.3rem', maxWidth: '700px', margin: '0 auto 40px', opacity: 0.9 }}>
+        <p
+          style={{
+            fontSize: '1.3rem',
+            maxWidth: '700px',
+            margin: '0 auto 40px',
+            opacity: 0.9
+          }}
+        >
           Interfaces modernas, acessíveis e otimizadas para conversão
         </p>
-        <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <button style={btnStyle('rgba(255,255,255,0.2)', '#fff')}>Ver Portfólio</button>
-          <button style={btnStyle('transparent', '#fff', '1px solid rgba(255,255,255,0.3)')}>Contato</button>
+        <div
+          style={{
+            display: 'flex',
+            gap: '16px',
+            justifyContent: 'center',
+            flexWrap: 'wrap'
+          }}
+        >
+          <button style={btnStyle('rgba(255,255,255,0.2)', '#fff')}>
+            Ver Portfólio
+          </button>
+          <button
+            style={btnStyle(
+              'transparent',
+              '#fff',
+              '1px solid rgba(255,255,255,0.3)'
+            )}
+          >
+            Contato
+          </button>
         </div>
       </section>
 
@@ -94,11 +131,13 @@ export default function WebDesignPage() {
         <h3 style={{ textAlign: 'center', fontSize: '2rem', marginBottom: '40px' }}>
           Projetos Recentes
         </h3>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '24px'
-        }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '24px'
+          }}
+        >
           {projects.map((proj, i) => (
             <div
               key={i}
@@ -109,41 +148,89 @@ export default function WebDesignPage() {
                 backdropFilter: 'blur(12px)',
                 border: darkMode ? '1px solid #333' : '1px solid rgba(255,255,255,0.2)',
                 transition: '0.4s',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                boxShadow: darkMode ? '0 0 10px #000' : '0 8px 24px rgba(0,0,0,0.15)'
               }}
-              onMouseOver={e => e.currentTarget.style.transform = 'translateY(-12px)'}
-              onMouseOut={e => e.currentTarget.style.transform = 'translateY(0)'}
+              onMouseOver={(e) =>
+                (e.currentTarget.style.transform = 'translateY(-12px)')
+              }
+              onMouseOut={(e) => (e.currentTarget.style.transform = 'translateY(0)')}
             >
-              <div style={{
-                height: '180px',
-                background: `linear-gradient(135deg, ${proj.color.split(' ')[1]}, ${proj.color.split(' ')[3]})`,
-                position: 'relative'
-              }}>
-                <div style={{
-                  position: 'absolute',
-                  bottom: '16px',
-                  left: '16px',
-                  background: 'rgba(0,0,0,0.4)',
-                  padding: '8px 12px',
-                  borderRadius: '8px',
-                  fontSize: '0.8rem',
-                  backdropFilter: 'blur(8px)'
-                }}>
+              <div
+                style={{
+                  height: '180px',
+                  position: 'relative',
+                  overflow: 'hidden'
+                }}
+              >
+                <img
+                  src={proj.image}
+                  alt={proj.title}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    transition: '0.4s'
+                  }}
+                  onMouseOver={(e) => (e.currentTarget.style.transform = 'scale(1.08)')}
+                  onMouseOut={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background: `linear-gradient(135deg, ${proj.color.split(' ')[1]}, ${proj.color.split(' ')[3]})`,
+                    opacity: 0.3
+                  }}
+                ></div>
+                <div
+                  style={{
+                    position: 'absolute',
+                    bottom: '16px',
+                    left: '16px',
+                    background: 'rgba(0,0,0,0.5)',
+                    padding: '8px 12px',
+                    borderRadius: '8px',
+                    fontSize: '0.8rem',
+                    backdropFilter: 'blur(6px)',
+                    color: '#fff'
+                  }}
+                >
                   Preview
                 </div>
               </div>
+
               <div style={{ padding: '20px' }}>
-                <h4 style={{ fontSize: '1.3rem', marginBottom: '8px', fontWeight: '600' }}>{proj.title}</h4>
-                <p style={{ fontSize: '0.95rem', opacity: 0.8, marginBottom: '16px' }}>{proj.desc}</p>
+                <h4
+                  style={{
+                    fontSize: '1.3rem',
+                    marginBottom: '8px',
+                    fontWeight: '600'
+                  }}
+                >
+                  {proj.title}
+                </h4>
+                <p
+                  style={{
+                    fontSize: '0.95rem',
+                    opacity: 0.8,
+                    marginBottom: '16px'
+                  }}
+                >
+                  {proj.desc}
+                </p>
                 <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                  {proj.tags.map(tag => (
-                    <span key={tag} style={{
-                      fontSize: '0.75rem',
-                      background: 'rgba(255,255,255,0.2)',
-                      padding: '4px 10px',
-                      borderRadius: '50px',
-                      backdropFilter: 'blur(5px)'
-                    }}>
+                  {proj.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      style={{
+                        fontSize: '0.75rem',
+                        background: 'rgba(255,255,255,0.2)',
+                        padding: '4px 10px',
+                        borderRadius: '50px',
+                        backdropFilter: 'blur(5px)'
+                      }}
+                    >
                       {tag}
                     </span>
                   ))}
@@ -155,20 +242,25 @@ export default function WebDesignPage() {
       </section>
 
       {/* Footer */}
-      <footer style={{
-        textAlign: 'center',
-        padding: '40px 20px',
-        fontSize: '0.9rem',
-        opacity: 0.7,
-        borderTop: '1px solid rgba(255,255,255,0.1)'
-      }}>
-        <p>© 2025 Web Design Pro • Feito com <span style={{ color: '#e91e63' }}>amor</span> e código</p>
+      <footer
+        style={{
+          textAlign: 'center',
+          padding: '40px 20px',
+          fontSize: '0.9rem',
+          opacity: 0.7,
+          borderTop: '1px solid rgba(255,255,255,0.1)'
+        }}
+      >
+        <p>
+          © 2025 Ghost Dev • Feito com{" "}
+          <span style={{ color: '#e91e63' }}>amor</span> e código
+        </p>
       </footer>
     </div>
   );
 }
 
-// Estilo reutilizável
+// 🔹 Botão reutilizável
 const btnStyle = (bg, color, border = 'none') => ({
   padding: '14px 28px',
   background: bg,
