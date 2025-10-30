@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - JS</title>
+  <style>
+    /* mesmo CSS do 2-css.html */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: #4e54c8; background: linear-gradient(to right, #8E2DE2, #4A00E0); display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .card { background:#fff; padding:40px; border-radius:20px; box-shadow:0 15px 35px rgba(0,0,0,0.15); max-width:420px; width:100%; text-align:center; }
+    h1 { font-size:28px; margin-bottom:8px; color:#1a1a1a; }
+    p { color:#666; margin-bottom:30px; font-size:15px; }
+    input { width:100%; padding:14px; margin:10px 0; border:1px solid #ddd; border-radius:12px; font-size:16px; }
+    button { width:100%; padding:14px; background:#8E2DE2; color:white; border:none; border-radius:12px; font-size:16px; font-weight:bold; cursor:pointer; }
+    .msg { margin-top:15px; font-size:14px; }
+    .success { color:#28a745; } .error { color:#dc3545; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Login (JS)</h1>
+    <p>Validação com JavaScript</p>
+    <form id="form">
+      <input type="email" id="email" placeholder="E-mail" required />
+      <input type="password" id="senha" placeholder="Senha" required />
+      <button type="submit">Entrar</button>
+    </form>
+    <p class="msg" id="msg"></p>
+  </div>
+
+  <script>
+    document.getElementById('form').onsubmit = function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const senha = document.getElementById('senha').value;
+      const msg = document.getElementById('msg');
+
+      if (email && senha.length >= 6) {
+        msg.textContent = 'Login bem-sucedido!';
+        msg.className = 'msg success';
+      } else {
+        msg.textContent = 'E-mail e senha (6+ caracteres) obrigatórios.';
+        msg.className = 'msg error';
+      }
+    };
+  </script>
+</body>
+</html>
