@@ -3,47 +3,267 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login - CSS</title>
+  <title>Login - HTML + CSS Premium</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
+    /* Reset e Base */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      display: flex; justify-content: center; align-items: center;
-      min-height: 100vh; color: #333;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      overflow: hidden;
+      position: relative;
+      background: #0f0c29;
+      background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+      color: #fff;
     }
+
+    /* Fundo animado com partículas */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.2) 0%, transparent 50%);
+      animation: pulse 8s infinite alternate;
+      z-index: -1;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.7; }
+      100% { transform: scale(1.1); opacity: 1; }
+    }
+
+    /* Card com Glassmorphism */
     .card {
-      background: white; padding: 40px; border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.1); width: 100%; max-width: 420px;
-      text-align: center; animation: fadeIn 0.6s ease;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 24px;
+      padding: 40px;
+      width: 100%;
+      max-width: 440px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.2),
+        0 0 60px rgba(120, 119, 198, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      animation: float 6s infinite ease-in-out;
+      position: relative;
+      overflow: hidden;
     }
-    h1 { font-size: 28px; margin-bottom: 8px; color: #1a1a1a; }
-    p { color: #666; margin-bottom: 30px; font-size: 15px; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+      border-radius: 24px 24px 0 0;
+    }
+
+    /* Títulos */
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #fff, #e0e7ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 32px;
+      font-weight: 500;
+    }
+
+    /* Formulário */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .input-group {
+      position: relative;
+    }
+
     input {
-      width: 100%; padding: 14px; margin: 10px 0; border: 1px solid #ddd;
-      border-radius: 12px; font-size: 16px; transition: 0.3s;
+      width: 100%;
+      padding: 16px 20px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 16px;
+      color: white;
+      font-size: 1rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      outline: none;
+      backdrop-filter: blur(8px);
     }
-    input:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.2); }
+
+    input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 500;
+    }
+
+    input:focus {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: #667eea;
+      box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Label flutuante */
+    .label {
+      position: absolute;
+      left: 20px;
+      top: 16px;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.7);
+      pointer-events: none;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    input:focus ~ .label,
+    input:not(:placeholder-shown) ~ .label {
+      top: -10px;
+      left: 16px;
+      font-size: 0.8rem;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      padding: 0 8px;
+      border-radius: 8px;
+      color: white;
+    }
+
+    /* Botão com efeito neon */
     button {
-      width: 100%; padding: 14px; margin: 15px 0 0; background: #667eea;
-      color: white; border: none; border-radius: 12px; font-size: 16px;
-      font-weight: bold; cursor: pointer; transition: 0.3s;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      border: none;
+      padding: 16px;
+      border-radius: 16px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 12px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
     }
-    button:hover { background: #5a6fd8; transform: translateY(-2px); }
-    a { color: #667eea; text-decoration: none; font-size: 14px; }
-    @keyframes fadeIn { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+
+    button::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.6s;
+    }
+
+    button:hover::before {
+      left: 100%;
+    }
+
+    button:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+    }
+
+    button:active {
+      transform: translateY(-2px);
+    }
+
+    /* Link */
+    .link {
+      margin-top: 24px;
+      font-size: 0.95rem;
+    }
+
+    .link a {
+      color: #a29bfe;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .link a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #a29bfe;
+      transition: width 0.3s ease;
+    }
+
+    .link a:hover {
+      color: #c3b8ff;
+    }
+
+    .link a:hover::after {
+      width: 100%;
+    }
+
+    /* Responsivo */
+    @media (max-width: 480px) {
+      .card {
+        padding: 32px 24px;
+        margin: 10px;
+      }
+      h1 { font-size: 2rem; }
+      .subtitle { font-size: 0.95rem; }
+    }
   </style>
 </head>
 <body>
+
   <div class="card">
-    <h1>Login (CSS)</h1>
-    <p>Estilo profissional com animação</p>
+    <h1>Login</h1>
+    <p class="subtitle">Design premium com HTML + CSS</p>
+
     <form>
-      <input type="email" placeholder="E-mail" />
-      <input type="password" placeholder="Senha" />
-      <button>Entrar</button>
+      <div class="input-group">
+        <input type="email" placeholder=" " required />
+        <label class="label">E-mail</label>
+      </div>
+
+      <div class="input-group">
+        <input type="password" placeholder=" " required />
+        <label class="label">Senha</label>
+      </div>
+
+      <button type="submit">Entrar com Estilo</button>
     </form>
-    <p style="margin-top:20px;"><a href="#">Esqueceu a senha?</a></p>
+
+    <div class="link">
+      <a href="#">Esqueceu a senha?</a>
+    </div>
   </div>
+
 </body>
 </html>

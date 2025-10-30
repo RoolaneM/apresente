@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login - HTML</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - JS</title>
 </head>
-
-<body
-  style="margin:0;padding:0;font-family:Arial,sans-serif;background:#f0f4f8;display:flex;justify-content:center;align-items:center;height:100vh;">
-  <div
-    style="background:#fff;padding:40px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.1);width:100%;max-width:400px;text-align:center;">
-    <h1 style="margin:0 0 10px;font-size:28px;color:#1a1a1a;">Login (HTML)</h1>
-    <p style="margin:0 0 30px;color:#666;font-size:15px;">Apenas estrutura</p>
-    <form>
-      <input type="email" placeholder="E-mail"
-        style="width:100%;padding:14px;margin:10px 0;border:1px solid #ddd;border-radius:10px;font-size:16px;" />
-      <input type="password" placeholder="Senha"
-        style="width:100%;padding:14px;margin:10px 0;border:1px solid #ddd;border-radius:10px;font-size:16px;" />
-      <button type="submit"
-        style="width:100%;padding:14px;margin:15px 0 0;background:#4361ee;color:white;border:none;border-radius:10px;font-size:16px;font-weight:bold;cursor:pointer;">Entrar</button>
+<body>
+  <div class="card">
+    <h1>Login (JS)</h1>
+    <p>Validação com JavaScript</p>
+    <form id="form">
+      <input type="email" id="email" placeholder="E-mail" required />
+      <input type="password" id="senha" placeholder="Senha" required />
+      <button type="submit">Entrar</button>
     </form>
-    <p style="margin:20px 0 0;font-size:14px;color:#888;">
-      <a href="#" style="color:#4361ee;text-decoration:none;">Esqueceu a senha?</a>
-    </p>
+    <p class="msg" id="msg"></p>
   </div>
-</body>
 
+  <script>
+    document.getElementById('form').onsubmit = function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const senha = document.getElementById('senha').value;
+      const msg = document.getElementById('msg');
+
+      if (email && senha.length >= 6) {
+        msg.textContent = 'Login bem-sucedido!';
+        msg.className = 'msg success';
+      } else {
+        msg.textContent = 'E-mail e senha (6+ caracteres) obrigatórios.';
+        msg.className = 'msg error';
+      }
+    };
+  </script>
+</body>
 </html>
